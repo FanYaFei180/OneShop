@@ -126,8 +126,8 @@ $(function () {
         shopData(-1);
         show_data(-1);
         if (shopdata.shopList.length===0) {
-            $(".total_price").parent(".last").hide();
-            document.write("空空如也")
+            $(".buy").hide();
+            $(".noshop").show();
         }
     });
     function shopData(index,num) {//改变数据
