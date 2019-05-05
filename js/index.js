@@ -88,11 +88,11 @@ $(function () {
     //2初始化
 
     $('.shop li').each(function (index,item) {
-        console.log(index,item)
+        // console.log(index,item)
         var price= $(item).find(".J_smallTotalPrice").text().slice(1)-0;
-        console.log(price);
+        // console.log(price);
         var num= $(item).find("input").val()-0;
-        console.log(num);
+        // console.log(num);
         shopdata.shopList.push({
             num:num,
             price:price,
@@ -110,21 +110,23 @@ $(function () {
         var C_index=$(this).parents("li").index();
         var shop_num=shopdata.shopList[C_index].num;
         if (shop_num<=1) {
-            alert("确定删除吗");
-            $(this).parents("li").remove();
+            shop_num=1;
             return false;
         }
         --shop_num;
         shopData(C_index,shop_num);
+        console.log(shopdata.shopList.length);
+
     });
     //删除
     $(".J_btnDelete").on("click",function () {
         var C_index=$(this).parents("li").index();
         $(this).parents("li").remove();
         shopdata.shopList.splice(C_index,1);
-        console.log(shopdata.shopList);
+        // console.log(shopdata.shopList);
         shopData(-1);
         show_data(-1);
+        console.log(shopdata.shopList.length);
         if (shopdata.shopList.length===0) {
             $(".buy").hide();
             $(".noshop").show();
